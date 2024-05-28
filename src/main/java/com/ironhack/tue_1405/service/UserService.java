@@ -8,7 +8,6 @@ import com.ironhack.tue_1405.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import org.springframework.web.server.ResponseStatusException;
 
 @Service
@@ -37,9 +36,9 @@ public class UserService {
         return userRepository.save(newUser);
     }
 
-    public void updateUser(Long userId, UserUpdateRequest userRequest){
+    public void updateUser(Long userId, UserUpdateRequest userRequest) {
         // TODO add not found exception handling
-        User foundUser = userRepository.findById(userId).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
+        User foundUser = userRepository.findById(userId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
 
         if (userRequest.getName() != null) {
             foundUser.setName(userRequest.getName());
@@ -56,20 +55,19 @@ public class UserService {
         userRepository.save(foundUser);
     }
 
-    public void updateUserEmail(Long userId, UserEmailRequest userEmailRequest){
+    public void updateUserEmail(Long userId, UserEmailRequest userEmailRequest) {
         // TODO add not found exception handling
-        User foundUser = userRepository.findById(userId).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
+        User foundUser = userRepository.findById(userId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
 
-        if (userEmailRequest.getEmail() != null){
+        if (userEmailRequest.getEmail() != null) {
             foundUser.setEmail(userEmailRequest.getEmail());
         }
 
         userRepository.save(foundUser);
     }
 
-    public User deleteUser(Long userId){
-        // todo exception
-        User foundUser = userRepository.findById(userId).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
+    public User deleteUser(Long userId) {
+        User foundUser = userRepository.findById(userId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
 
         userRepository.deleteById(userId);
 

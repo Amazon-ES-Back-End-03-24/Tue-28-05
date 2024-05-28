@@ -2,8 +2,6 @@ package com.ironhack.tue_1405.dtos;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 // DTO Data Transfer Object - Design Pattern
 public class UserUpdateRequest {
@@ -15,6 +13,9 @@ public class UserUpdateRequest {
 
     @Email(message = "Email should be valid")
     private String email;
+
+    public UserUpdateRequest() {
+    }
 
     public UserUpdateRequest(String name, Integer age, String email) {
         this.name = name;

@@ -6,6 +6,13 @@ public class UserEmailRequest {
     @Email(message = "Email should be valid")
     private String email;
 
+    public UserEmailRequest() {
+    }
+
+    public UserEmailRequest(String email) {
+        this.email = email;
+    }
+
     public @Email(message = "Email should be valid") String getEmail() {
         return email;
     }
